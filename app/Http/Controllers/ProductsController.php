@@ -14,6 +14,7 @@ class ProductsController extends Controller
     }
 
     public function store(ProductRequest $request){
+        
     	$product = Product::create([
     		'title' => $request->input('name_p'),
     		'description' => $request->input('desc_p'),
@@ -24,7 +25,7 @@ class ProductsController extends Controller
 
     	$product->save();
 
-        return redirect('/product/create');
-    	// return "HIHI";
+        // return redirect('/product/create');
+    	return  $request->input('desc_p');
     }
 }

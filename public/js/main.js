@@ -45,13 +45,23 @@ $(function(){
 		$.ajax({
 			url: '/product/store',
 			type: 'POST',
-			data: {'name_p': $('input[name=name_p]').val(), 'desc_p': $('input[name=desc_p]').val(), 'price_p': $('input[name=price_p]').val().replace(/\./g,''), 'stock_p': $('input[name=stock_p]').val(),'_token': $('input[name=_token').val(), 'status_p':$('input[name=status_p').val() },
+			data: {'name_p': $('input[name=name_p]').val(), 'desc_p': $('textarea[name=desc_p]').val(), 'price_p': $('input[name=price_p]').val(), 'stock_p': $('input[name=stock_p]').val(),'_token': $('input[name=_token').val(), 'status_p':$('input[name=status_p').val()},
 			success:function(data){
 				console.log('ok');
 			},
 			error: function(){
 				console.log('fail');
+			},
+			beforeSend: function(){
+				$('.notied').remove();
+				$('.form-product').prepend('<div class="notied" style="color:pink">Loading...</div>');
 			}
+		}).done(function(){
+			$('.notied').remove();
+			$('.form-product').prepend('<div class="notied" style="color:green">Added to a product</div>');
+		}).fail(function(){
+			$('.notied').remove();
+			$('.form-product').prepend('<div class="notied" style="color:red">Error</div>');
 		});
 		e.preventDefault();
 		// return false;

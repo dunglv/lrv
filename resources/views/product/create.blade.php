@@ -4,7 +4,7 @@
 	<section id="create_product">
 		<div class="container">
 			<div class="row">
-				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2">
+				<div class="col-xs-12 col-sm-12 col-md-8 col-lg-8 col-md-offset-2 col-lg-offset-2 form-product">
 					@if(count($errors)>0)
 					<div class="error-p">
 						<ul>
@@ -16,13 +16,12 @@
 					@endif
 					{!! 
 						Form::open([
-							'url' => '/product/store',
 							'type' => 'POST',
 							'autocomplete' => 'off'
 						]) 
 					!!}
 						<legend>Add Product in Stock</legend>
-						 {!! csrf_field() !!} 
+						 
 						<div class="form-group">
 							<label for="name_p">Product</label>
 							<input type="text" class="form-control" id="name_p" name="name_p" placeholder="Input product to add stock...">
